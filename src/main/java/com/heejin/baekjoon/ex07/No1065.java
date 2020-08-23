@@ -2,7 +2,7 @@ package com.heejin.baekjoon.ex07;
 
 import java.util.Scanner;
 
-public class No15506 {
+public class No1065 {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();

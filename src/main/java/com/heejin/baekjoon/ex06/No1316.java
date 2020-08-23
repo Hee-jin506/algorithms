@@ -3,32 +3,31 @@ package com.heejin.baekjoon.ex06;
 import java.util.Scanner;
 
 public class No1316 {
+  static Scanner sc = new Scanner(System.in);
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
     int num = sc.nextInt();
     int count = 0;
     for (int i = 0; i < num; i++) {
-      String str = sc.nextLine();
-      boolean result = true;
-      loop:
-      for (int j = 0; j < str.length(); j++) {
-        boolean same = true;
-        for (int k = j; k < str.length(); k++) {
-          if (same = true) {
-            if(str.charAt(j) != str.charAt(k)) {
-              same = false;
-            }
-          } else {
-            if (str.charAt(j) == str.charAt(k)) {
-              result = false;
-            }
-          }
-        }
-      }
-      if (result == true) {
+      if (same() == true) {      
         count++;
       }
     }
     System.out.println(count);
+  }
+  
+  static boolean same() {
+    String str = sc.next();
+    loop :
+    for (int i = 0; i < str.length(); i++) {
+      boolean same = true;
+      for (int j = i + 1; j < str.length(); j++) {
+        if (same == true && str.charAt(i) != str.charAt(j)) {
+          same = false;
+        } else if (same == false && str.charAt(i) == str.charAt(j)) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }
