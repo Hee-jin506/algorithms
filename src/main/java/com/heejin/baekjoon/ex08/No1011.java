@@ -18,13 +18,12 @@ public class No1011 {
     }
   }
   static int caseSolve(int distance) {
-    int maxK = 1;
+    int maxK = 0;
     int count = 0;
-    while ((distance - (maxK - 1) - maxK) >= 0) {
-      distance -= (maxK - 1) + maxK;
+    while ((distance - (maxK) - (maxK + 1)) >= 0) {
+      distance -= maxK + (maxK + 1);
       maxK++;
     }
-    maxK--;
     count += (maxK - 1) * 2 + 1;
     
     if (distance % maxK == 0) {

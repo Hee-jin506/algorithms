@@ -2,19 +2,31 @@ package com.heejin.baekjoon.ex09;
 
 import java.util.Scanner;
 
-public class No1978 {
+public class No2581 {
+  
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    boolean[] sosus = sosus(1, 1000);
-    int num = sc.nextInt();
-    int count = 0;
-    for (int i = 0; i < num; i++) {
-      int a = sc.nextInt();
-      if (!sosus[a - 1]) { 
-        count++;
+    int sum = 0;
+    int sosuMin = 0;
+    int min = sc.nextInt();
+    int max = sc.nextInt();
+    
+    boolean[] sosus = sosus(min, max);
+    for (int i = 0; i < sosus.length; i++) {
+      if (sosus[i] == false) {
+        if (sosuMin == 0) {
+          sosuMin = i + min;
+        }
+        sum += i + min;
       }
     }
-    System.out.println(count);
+    
+    if (sum == 0) {
+      System.out.println(-1);
+    } else {
+      System.out.println(sum);
+      System.out.println(sosuMin);
+    }
   }
   
   static boolean[] sosus(int min, int max) {
