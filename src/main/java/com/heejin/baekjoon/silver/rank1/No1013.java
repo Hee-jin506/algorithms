@@ -31,25 +31,48 @@ public class No1013 {
     int cursor = 0;
     
     while (cursor < line.length()) {
+      
       if (line.charAt(cursor) == '0') {
-        if (line.charAt(++cursor) != '1')
+        System.out.print(line.charAt(cursor));
+        if (line.charAt(++cursor) != '1') {
+          System.out.print(line.charAt(cursor));
           return false;
+        }
+        cursor++;
+        System.out.print(line.charAt(cursor));
+        
       } else {
         
         if (!(line.charAt(++cursor) == '0'
-            && line.charAt(++cursor) == '0'))
+            && line.charAt(++cursor) == '0')) {
+          System.out.print(line.charAt(cursor - 1));
+          System.out.print(line.charAt(cursor));
           return false;
+        }
         
         cursor++;
-        for (; line.charAt(cursor) != '1'; cursor++) {
-          if (cursor == line.length())
-            return false;
+        for (; cursor < line.length(); cursor++) {
+          System.out.print(line.charAt(cursor));
+          if (line.charAt(cursor) == '1') {
+            break;
+          }
         }
         
+        if (cursor < line.length(); cursor++)
+        
+        cursor++;
         for (; cursor < line.length(); cursor++) {
-          if (line.charAt(cursor) != '1')
-            return false;
+          if (line.charAt(cursor) == '1')
+            break;
         }
+        System.out.println(cursor);
+        
+        if (line.charAt(cursor + 1) == '0') {
+          if (line.charAt(cursor - 2) == '0')
+            return false;
+          cursor--;
+        }
+        
       }
     }
     return true;
