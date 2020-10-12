@@ -1,34 +1,32 @@
 package com.heejin.programmers;
 
+import java.util.Arrays;
+
 class No43238_ans {
-  static long solution(int n, int[] times) {
-      long answer = 0;
-      long max = 0;
-      long min = 0;
+  public long solution(int n, int[] times) {
+    Arrays.sort(times);
+    long min = 1;
+    long max = (long)times[times.length - 1] * n;
+    long mid = 0;
+    long sum;
+    long answer = max;
+
+    while (min <= max) {
+      sum = 0;
+      mid = (min + max) / 2;
       for (int time : times) {
-          if (max < time)
-              max = time;
+        sum += mid/time;
       }
-      max *= n;
-      
-      while (min <= max) {
-          long cnt = 0;
-          long mid = (max + min) / 2;
-          for (int time : times) {
-              cnt += mid / time;
-          }
-          if (cnt < n) {
-              min = mid + 1;
-          } else if (cnt == n) {
-              answer = mid;
-              break;
-          } else {
-              max = mid - 1;
-          }
+      if (sum >= n) {
+        if (mid < answer) {
+          answer = mid;
+        }
+        max = mid - 1;
       }
-      return answer;
-  }
-  public static void main(String[] args) {
-    System.out.println(solution(6, new int[] {7, 10}));
+      else {
+        min = mid + 1;
+      }
+    }
+    return answer;
   }
 }
