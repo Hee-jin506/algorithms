@@ -57,7 +57,7 @@ public class No67257 {
 		String s = sc.nextLine();
 		No67257 p = new No67257();
 		
-		System.out.println(p.extractOperators(s));
+		System.out.println(p.operators(s));
 		for (String i : p.extract(s)) {
 		System.out.print(i + " ");
 		}
